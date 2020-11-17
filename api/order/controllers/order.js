@@ -13,7 +13,7 @@ module.exports = {
     const { id } = ctx.state.user;
     
     const charge = await stripe.charges.create({
-      amount: total * 100,
+      amount: Math.round(total * 100),
       currency: "usd",
       description: `Order ${new Date()} by ${ctx.state.user.username}`,
       source: stripeTokenId,
